@@ -16,5 +16,9 @@ public class TiroInimigo : MonoBehaviour
     void Update()
     {
         rB.velocity = new Vector2(rB.velocity.x, -1 * speedTiro);
+        if(transform.position.y <= -5.5f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
