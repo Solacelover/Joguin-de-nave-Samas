@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InimigoMoves : MonoBehaviour
-{    
-    private Rigidbody2D inimigoRb;
-    public float inimigoSpeed = 2;
+public class InimigoCMoves : MonoBehaviour
+{
     // Start is called before the first frame update
+    private Rigidbody2D inimigoRb;
+    public float inimigoSpeed = 2.5f;
+    public float inimigoSpeedX = 1.25f;
+    private int vida = 2;
     void Start()
     {
         inimigoRb = GetComponent<Rigidbody2D>();
@@ -15,18 +17,26 @@ public class InimigoMoves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inimigoRb.velocity = new Vector2(inimigoRb.velocity.x,1 * -inimigoSpeed);
+        inimigoRb.velocity = new Vector2(inimigoSpeedX,1 * -inimigoSpeed);
         if(transform.position.y <= -5.68f)
         {
             Destroy(gameObject);
+        }
+        if(vida <= 0)
+        {
+          Destroy(gameObject);  
         }
     }
     private void OnTriggerEnter(Collider other)
     {
        if (other.gameObject.tag == "Tiro")
        { 
-            Destroy(gameObject);
             Destroy(other.gameObject);
+
+       }
+       if (other.gameObject.tag == "Parede")
+       {
+            inimigoSpeedX *= -1;
        }
     }
 }

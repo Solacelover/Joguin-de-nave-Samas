@@ -27,8 +27,8 @@ public class Tiro : MonoBehaviour
     {
         if(collision.gameObject.tag == "Inimigo")
         {
-            Destroy(gameObject);
             Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }
