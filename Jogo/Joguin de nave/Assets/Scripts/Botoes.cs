@@ -36,4 +36,8 @@ public class Botoes : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+    public void IrTelaInicial()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
