@@ -1915,8 +1915,8 @@ MonoBehaviour:
   inimigoB: {fileID: 6356240170558953542, guid: 497265257d379644197c196bce5a8573, type: 3}
   inimigoC: {fileID: 5381202703552933798, guid: 0a2816cdd9662564b8255249af2ac1e0, type: 3}
   delay: 2
-  delayB: 0
-  delayC: 0
+  delayB: 3
+  delayC: 2.5
   gmAudio: {fileID: 0}
   somTiro: {fileID: 8300000, guid: 3a0867d6165a5e6459447792cd5eca7f, type: 3}
   pontuacao: 0
@@ -2218,6 +2218,14 @@ PrefabInstance:
     - target: {fileID: 5381202703552933798, guid: 0a2816cdd9662564b8255249af2ac1e0, type: 3}
       propertyPath: m_Name
       value: InimigoC
+      objectReference: {fileID: 0}
+    - target: {fileID: 6205350832489578084, guid: 0a2816cdd9662564b8255249af2ac1e0, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6205350832489578084, guid: 0a2816cdd9662564b8255249af2ac1e0, type: 3}
+      propertyPath: xSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
