@@ -31,6 +31,7 @@ public class InimigoBMoves : MonoBehaviour
         inimigoBrb.velocity = new Vector2(inimigoBrb.velocity.x, 1 * -inimigoBspeed);
         if (transform.position.y <= -5.68f)
         {
+            gM.pontuacao += 1;
             Destroy(gameObject);
         }
          if (gM.gameOver != true && tempoGerar <= Time.time)
@@ -43,6 +44,7 @@ public class InimigoBMoves : MonoBehaviour
     {
         if (other.gameObject.tag == "Tiro")
         {
+            gM.pontuacao += 1;
             Destroy(gameObject);
             Destroy(other.gameObject);
         }

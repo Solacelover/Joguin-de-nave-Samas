@@ -5,38 +5,69 @@ using UnityEngine;
 public class InimigoCMoves : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Rigidbody2D inimigoRb;
-    public float inimigoSpeed = 2.5f;
-    public float inimigoSpeedX = 1.25f;
-    private int vida = 2;
-    void Start()
+    private Rigidbody2D rb;
+public float speed;
+public float xSpeed;
+private float fixSpeed;
+private GameManager gM;
+private float pInicialX;
+public float limiteX;
+// Start is called before the first frame update
+void Start()
+{
+    rb = GetComponent<Rigidbody2D>();
+    gM = GameObject.Find("GameManager").GetComponent<GameManager>();
+    pInicialX = transform.position.x;
+    xSpeed = Random.Range(0.5f,1);
+    fixSpeed = xSpeed;
+}
+
+// Update is called once per frame
+void Update()
+{
+    if (gM.gameOver == false && gM.pause == false)
     {
-        inimigoRb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(rb.velocity.x, 1 * -speed);
+    }
+    else if (gM.gameOver == true || gM.pause == true)
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    if (transform.position.y <= -0.6)
     {
-        inimigoRb.velocity = new Vector2(inimigoSpeedX,1 * -inimigoSpeed);
-        if(transform.position.y <= -5.68f)
-        {
-            Destroy(gameObject);
-        }
-        if(vida <= 0)
-        {
-          Destroy(gameObject);  
-        }
+        gM.pontuacao += 1;
+        Destroy(gameObject);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-       if (other.gameObject.tag == "Tiro")
-       { 
-            Destroy(other.gameObject);
 
-       }
-       if (other.gameObject.tag == "Parede")
-       {
-            inimigoSpeedX *= -1;
-       }
+    rb.velocity = new Vector2(fixSpeed, rb.velocity.y);
+    DeslocarHorizontal();
+}
+
+private void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.gameObject.tag == "Progetil")
+    {
+        gM.pontuacao += 1;
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     }
+}
+
+private void DeslocarHorizontal()
+{      
+    if (transform.position.x >= pInicialX + limiteX)
+    {
+        fixSpeed = -xSpeed;
+    }
+    else if (transform.position.x <= pInicialX - limiteX)
+    {
+        fixSpeed = xSpeed;
+    }        
+
+    if (gM.gameOver == true || gM.pause == true)
+    {
+        fixSpeed = 0;
+    }
+}
 }

@@ -24,4 +24,16 @@ public class Botoes : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Recomecar()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void Pausar()
+    {
+        Time.timeScale = 0;
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1;
+    }
 }
