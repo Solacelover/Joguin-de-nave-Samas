@@ -30,7 +30,7 @@ public class InimigoMoves : MonoBehaviour
        if (other.gameObject.tag == "Tiro")
        { 
             gM.pontuacao += 1;
-            Destroy(gameObject);
+            Destroy(gameObject,0.25f);
             Destroy(other.gameObject);
        }
     }

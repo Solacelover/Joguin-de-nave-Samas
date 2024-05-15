@@ -19,6 +19,7 @@ public class Botoes : MonoBehaviour
     public void IniciarGame()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
     public void Quitar()
     {
@@ -27,6 +28,7 @@ public class Botoes : MonoBehaviour
     public void Recomecar()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
     public void Pausar()
     {

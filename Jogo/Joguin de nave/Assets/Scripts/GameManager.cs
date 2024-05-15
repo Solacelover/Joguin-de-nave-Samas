@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pontuacatxt.text = pontuacao.ToString();
+
         if (gameOver != true && tempoGerar <= Time.time && pause == false)
         {
             Instantiate(inimigo, new Vector3(Random.Range(-2.29f,2.3f),6,0), Quaternion.identity);
@@ -60,7 +62,9 @@ public class GameManager : MonoBehaviour
     }
     public void Recomecar()
     {
+        gameOver = false;
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
     public void Pausar()
     {
