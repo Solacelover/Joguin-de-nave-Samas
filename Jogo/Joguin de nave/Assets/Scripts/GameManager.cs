@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pontuacatxt;
     public GameObject telaPause;
     public GameObject botaoDePause;
+    public GameObject telaDeGameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,12 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(inimigoC, new Vector3(Random.Range(-2.29f,2.3f),6,0), Quaternion.identity);
             tempoGerarC = Time.time + delayC;
+        }
+        if(gameOver == true)
+        {
+            Time.timeScale = 0;
+            botaoDePause.SetActive(false);
+            telaDeGameOver.SetActive(true);
         }
     }
     public void Recomecar()
